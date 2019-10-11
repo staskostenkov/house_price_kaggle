@@ -1,0 +1,51 @@
+
+http://localhost:8888/jp
+
+docker run -it --rm -e JUPYTER_ENABLE_LAB=1 --name jplab --workdir /home/jovyan/work -v "$PWD":/home/jovyan/work -p 8888:8888 jupyter/datascience-notebook:9b06df75e445 start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin=* --NotebookApp.base_url=/jp
+
+
+
+docker run -e JUPYTER_ENABLE_LAB=1 --name jplab -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it my_rep/my_notebook jupyter notebook --no-browser --ip="*" --notebook-dir=/tmp/working --allow-root --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin=* --NotebookApp.base_url=/jp
+
+
+
+
+
+
+docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it my_rep/my_notebook jupyter notebook --no-browser --ip="*" --notebook-dir=/tmp/working --allow-root --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin=* --NotebookApp.base_url=/jp
+
+
+
+sudo docker build -t my_rep/my_notebook .
+
+https://github.com/Kaggle/docker-python
+https://medium.com/google-cloud/jupyter-tensorflow-nvidia-gpu-docker-google-compute-engine-4a146f085f17
+
+
+docker run -it --rm -e JUPYTER_ENABLE_LAB=1 --name jplab -w=/tmp/working -v "$PWD":/tmp/working -p 8888:8888 my_rep/my_notebook:latest jupyter notebook --no-browser --allow-root start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin=* --NotebookApp.base_url=/jp --notebook-dir=/tmp/working/src
+
+*********************************
+docker-machine create -d virtualbox --virtualbox-disk-size  160000  --virtualbox-memory 8196  big2
+
+docker-machine start big2
+eval $(docker-machine env big2)
+
+eval $(docker-machine env big2)
+docker pull kaggle/rstats:latest
+docker pull kaggle/python:latest
+
+# Change to your directory. Change this for directory.
+cd /Users/mchirico/Dropbox/kaggle/iris
+
+# Change machine environment
+eval $(docker-machine env big2)
+
+# Function to launch browser and container.
+kjupyter() {
+    (sleep 3 && open "http://$(docker-machine ip big2):8888")&
+docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="0.0.0.0" --notebook-dir=/tmp/working/src
+        }
+
+# Execute function
+kjupyter
+*************************************
